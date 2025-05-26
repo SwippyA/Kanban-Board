@@ -49,21 +49,23 @@ const Board: React.FC = () => {
   title="Backlog"
   status="backlog"
   tasks={tasks.filter(task => task.status === 'backlog')}
-  className="bg-indigo-500 rounded-lg shadow-md p-4"
+  className={`${columnColors.backlog} rounded-lg shadow-md p-4`}
   headerClass="text-white font-bold text-lg"
 />
+
 <Column
   title="In Progress"
   status="in-progress"
   tasks={tasks.filter(task => task.status === 'in-progress')}
-  className="bg-indigo-500 rounded-lg shadow-md p-4"
+  className={`${columnColors['in-progress']} rounded-lg shadow-md p-4`}
   headerClass="text-white font-bold text-lg"
 />
+
 <Column
   title="Done"
   status="done"
   tasks={tasks.filter(task => task.status === 'done')}
-  className="bg-indigo-500 rounded-lg shadow-md p-4"
+  className={`${columnColors.done} rounded-lg shadow-md p-4`}
   headerClass="text-white font-bold text-lg"
 />
           </div>
