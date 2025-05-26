@@ -14,16 +14,26 @@ const Board: React.FC = () => {
   const darkMode = useSelector((state: RootState) => state.tasks.darkMode);
   const [showForm, setShowForm] = useState(false);
 
-  // Color classes for columns, adjusted for dark/light mode
+  // Enhanced colorful column styles with gradients
   const columnColors = {
-    backlog: darkMode ? 'bg-purple-700' : 'bg-purple-300',
-    'in-progress': darkMode ? 'bg-yellow-700' : 'bg-yellow-300',
-    done: darkMode ? 'bg-green-700' : 'bg-green-300',
+    backlog: darkMode
+      ? 'bg-gradient-to-br from-purple-800 to-purple-600'
+      : 'bg-gradient-to-br from-purple-300 to-purple-200',
+    'in-progress': darkMode
+      ? 'bg-gradient-to-br from-yellow-700 to-yellow-500'
+      : 'bg-gradient-to-br from-yellow-300 to-yellow-200',
+    done: darkMode
+      ? 'bg-gradient-to-br from-green-700 to-green-500'
+      : 'bg-gradient-to-br from-green-300 to-green-200',
   };
 
   return (
     <DndProvider backend={HTML5Backend}>
-      <div className={`min-h-screen transition-colors duration-300 ${darkMode ? 'bg-gray-900 text-white' : 'bg-gray-100 text-gray-900'}`}>
+      <div
+        className={`min-h-screen transition-colors duration-300 ${
+          darkMode ? 'bg-gray-900 text-white' : 'bg-gray-100 text-gray-900'
+        }`}
+      >
         <div className="container mx-auto px-4 py-10">
           <div className="flex justify-between items-center mb-10">
             <h1 className="text-4xl font-extrabold tracking-tight">Kanban Board</h1>
@@ -42,32 +52,32 @@ const Board: React.FC = () => {
             <div className="mb-6">
               <TaskForm onClose={() => setShowForm(false)} />
             </div>
-          )}
-
+          )} 
+          {/* All the colour had import here */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             <Column
-  title="Backlog"
-  status="backlog"
-  tasks={tasks.filter(task => task.status === 'backlog')}
-  className={`${columnColors.backlog} rounded-lg shadow-md p-4`}
-  headerClass="text-white font-bold text-lg"
-/>
+              title="Backlog"
+              status="backlog"
+              tasks={tasks.filter((task) => task.status === 'backlog')}
+              className={`${columnColors.backlog} rounded-2xl shadow-xl p-4 border-2 border-white/20`}
+              headerClass="text-white font-extrabold text-xl tracking-wide mb-2"
+            />
 
-<Column
-  title="In Progress"
-  status="in-progress"
-  tasks={tasks.filter(task => task.status === 'in-progress')}
-  className={`${columnColors['in-progress']} rounded-lg shadow-md p-4`}
-  headerClass="text-white font-bold text-lg"
-/>
+            <Column
+              title="In Progress"
+              status="in-progress"
+              tasks={tasks.filter((task) => task.status === 'in-progress')}
+              className={`${columnColors['in-progress']} rounded-2xl shadow-xl p-4 border-2 border-white/20`}
+              headerClass="text-white font-extrabold text-xl tracking-wide mb-2"
+            />
 
-<Column
-  title="Done"
-  status="done"
-  tasks={tasks.filter(task => task.status === 'done')}
-  className={`${columnColors.done} rounded-lg shadow-md p-4`}
-  headerClass="text-white font-bold text-lg"
-/>
+            <Column
+              title="Done"
+              status="done"
+              tasks={tasks.filter((task) => task.status === 'done')}
+              className={`${columnColors.done} rounded-2xl shadow-xl p-4 border-2 border-white/20`}
+              headerClass="text-white font-extrabold text-xl tracking-wide mb-2"
+            />
           </div>
         </div>
       </div>

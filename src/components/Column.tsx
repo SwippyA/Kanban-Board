@@ -4,14 +4,14 @@ import { useDispatch } from 'react-redux';
 import { moveTask } from '../features/tasks/tasksSlice';
 import type { Task, TaskStatus } from '../features/tasks/tasksTypes';
 import TaskCard from './TaskCard';
-
+// type declaration 
 interface ColumnProps {
   title: string;
   status: TaskStatus;
   tasks: Task[];
-  className?: string;      // <-- optional style class for outer div
-  headerClass?: string;    // <-- optional style class for title
-}
+  className?: string;     
+    headerClass?: string;   
+  }
 
 const Column: React.FC<ColumnProps> = ({ title, status, tasks, className = '', headerClass = '' }) => {
   const dispatch = useDispatch();
@@ -37,7 +37,7 @@ const Column: React.FC<ColumnProps> = ({ title, status, tasks, className = '', h
   } ${tasks.length ? 'min-h-[250px]' : 'h-[250px]'} shadow-md`}
 >
   <h2 className={`text-2xl font-bold mb-4 ${headerClass}`}>{title}</h2>
-
+      {/* Mapping all the task */}
       <div className="space-y-4">
         {tasks.length > 0 ? (
           tasks.map((task) => <TaskCard key={task.id} task={task} />)

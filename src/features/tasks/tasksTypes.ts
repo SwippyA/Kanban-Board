@@ -19,6 +19,6 @@ export interface ITasksState {
   };
 }
 
-// Alias for backward compatibility
+// backward compatibility
 export type Task = ITask;
 export type TasksState = ITasksState;
